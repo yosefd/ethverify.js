@@ -1,0 +1,1 @@
+Simple node.js application to verify that your generate wallet keys are valid and match each other.
