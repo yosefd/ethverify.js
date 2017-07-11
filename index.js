@@ -7,13 +7,13 @@ prompt.start();
 
 prompt.get(['publicAddress', 'privateKey'], function (err, result) {
 	const privateKeyBuffer = new Buffer(result.privateKey, 'hex');
-	const publicKeyBuffer = ethutil.privateToPublic(privateKeyBuffer); 
+	const publicKeyBuffer = ethutil.privateToPublic(privateKeyBuffer);
 
 	// verify private key
 	console.log('Private key legal: ' + ethutil.isValidPrivate(privateKeyBuffer));
 
 	// verify public address
-	console.log('Wallet address matches public address derived from private key: ' + (ethutil.bufferToHex(ethutil.pubToAddress(publicKeyBuffer)) === result.publicAddress));
+	console.log('Wallet address matches public address derived from private key: ' + (ethutil.bufferToHex(ethutil.pubToAddress(publicKeyBuffer)).toUpperCase() === result.publicAddress.toUpperCase()));
 
 	// generate message to sign
 	const msg = randomBytes(32);
